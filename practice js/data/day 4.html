@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 4</title>
+</head>
+<body>
+  <h1>Enter your name:</h1>
+  <input type="text" id="nameinput" placeholder="Enter your name">
+  <button id="btn">Show Name</button>
+  <p id="output"></p>
+
+  <script>
+    const input = document.getElementById("nameinput");
+    const button = document.getElementById("btn");
+    const output = document.getElementById("output");
+
+    button.addEventListener('click', function() {
+      const name = input.value.trim();
+      if (name === "") {
+        output.textContent = "Please enter your name.";
+      } else {
+        output.textContent = "Hello, " + name + "!";
+      }
+    });
+  </script>
+</body>
+</html>

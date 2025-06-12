@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Clock</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="clock">00:00:00</div>
+  <script>
+    function digitalclock() {
+      const now = new Date();// curr date and time fetch  karta hai.
+      const hr = String(now.getHours()).padStart(2, '0');//gethour hour show hota hai curr wala.
+      const min = String(now.getMinutes()).padStart(2, '0');//getmin minutes how karta hai curr wala.
+      const sec = String(now.getSeconds()).padStart(2, '0');//getsec seconds how karat hai curr wala.
+      document.getElementById("clock").textContent = `${hr}:${min}:${sec}`;
+    }
+
+    setInterval(digitalclock, 1000);
+    digitalclock();
+  </script>
+</body>
+</html>

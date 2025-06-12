@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 5 - Age Check</title>
+</head>
+<body>
+  <input type="number" id="num" placeholder="Enter your birth year">
+  <button id="btn">Check Age</button>
+  <p id="res">Output will appear here</p>
+
+  <script>
+    const input = document.getElementById("num");
+    const button = document.getElementById("btn");
+    const result = document.getElementById("res");
+
+    button.addEventListener('click', function () {
+      const year = Number(input.value);
+      const currentYear = new Date().getFullYear();
+
+      if (!year || year > currentYear || year < 1900) {
+        result.textContent = "Please enter a valid birth year.";
+        return;
+      }
+
+      const age = currentYear - year;
+
+      if (age >= 18) {
+        result.textContent = `You are ${age}. You're an Adult `;
+      } else {
+        result.textContent = `You are ${age}. You're a Minor `;
+      }
+    });
+  </script>
+</body>
+</html>

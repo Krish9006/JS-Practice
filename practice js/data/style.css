@@ -1,0 +1,14 @@
+body {
+  background-color: #000;
+  color:red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: monospace;
+}
+
+#clock {
+  font-size: 60px;
+  letter-spacing: 4px;
+}
