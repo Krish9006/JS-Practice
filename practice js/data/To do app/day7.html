@@ -8,8 +8,12 @@
 </head>
 <body>
   <div id="container">
+
+    <!-- Top Header Section -->
     <div class="header">
       <h2>📝 My To-Do List</h2>
+      
+      <!-- Filter Dropdown to show tasks based on status -->
       <div class="filter-dropdown">
         <label for="filterSelect">Show:</label>
         <select id="filterSelect">
@@ -20,20 +24,28 @@
       </div>
     </div>
 
+    <!-- Input area to add task -->
     <div class="input-row">
       <input type="text" id="input" placeholder="Enter your task" />
       <button id="btn1" class="add">Add</button>
     </div>
 
+    <!-- Bulk action buttons -->
     <div class="bulk-buttons">
       <button id="completeSelectedBtn">✅ Mark Selected Complete</button>
       <button id="deleteSelectedBtn">🗑 Delete Selected</button>
     </div>
 
+    <!-- Where tasks will be listed -->
     <ul id="tasklist"></ul>
+
+    <!-- Task summary info -->
+    <div id="summary" style="margin-top: 15px; font-weight: bold; color: white;"></div>
   </div>
 
+  <!-- ================== JavaScript Logic ================== -->
   <script>
+    // Get all elements we will interact with
     const input = document.getElementById("input");
     const addBtn = document.getElementById("btn1");
     const filterSelect = document.getElementById("filterSelect");
@@ -41,43 +53,54 @@
     const completeSelectedBtn = document.getElementById("completeSelectedBtn");
     const deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
 
+    // Retrieve existing tasks from localStorage (or initialize empty array)
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
+    // Function to save to localStorage and reload display
     function saveAndRefresh() {
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      displayTasks();
+      localStorage.setItem("tasks", JSON.stringify(tasks)); // Store in browser
+      displayTasks(); // Re-render tasks
     }
 
+    // Show tasks based on filter (all/completed/incomplete)
     function displayTasks() {
-      tasklist.innerHTML = "";
+      tasklist.innerHTML = ""; // clear UI before re-render
+
       const selectedFilter = filterSelect.value;
 
       tasks.forEach((taskObj, index) => {
+        // Conditionally show tasks based on filter
         const shouldDisplay =
           selectedFilter === "all" ||
           (selectedFilter === "completed" && taskObj.completed) ||
           (selectedFilter === "incomplete" && !taskObj.completed);
 
         if (shouldDisplay) {
-          const li = document.createElement("li");
+          const li = document.createElement("li"); // Create <li>
+
+          // Apply 'completed' CSS class
           if (taskObj.completed) li.classList.add("completed");
 
+          // Create checkbox for bulk actions
           const checkbox = document.createElement("input");
           checkbox.type = "checkbox";
           checkbox.className = "task-checkbox";
-          checkbox.dataset.index = index;
+          checkbox.dataset.index = index; // store which task
 
+          // Show task text
           const taskText = document.createElement("span");
           taskText.textContent = taskObj.text;
 
+          // Complete Button - toggle task completion
           const completeBtn = document.createElement("button");
           completeBtn.textContent = "✔";
           completeBtn.className = "complete-btn";
           completeBtn.onclick = () => {
             tasks[index].completed = !tasks[index].completed;
-            saveAndRefresh();
+            saveAndRefresh(); // refresh UI
           };
 
+          // Edit Button - edit task text
           const editBtn = document.createElement("button");
           editBtn.textContent = "✏️";
           editBtn.className = "edit-btn";
@@ -85,10 +108,11 @@
             const newText = prompt("Edit task:", taskObj.text);
             if (newText !== null && newText.trim() !== "") {
               tasks[index].text = newText.trim();
-              saveAndRefresh();
+              saveAndRefresh(); // update
             }
           };
 
+          // Add all elements to the list item
           li.appendChild(checkbox);
           li.appendChild(taskText);
           li.appendChild(completeBtn);
@@ -96,26 +120,31 @@
           tasklist.appendChild(li);
         }
       });
+
+      updateSummary(); // Update summary stats
     }
 
+    // Add button click
     addBtn.onclick = () => {
       const taskText = input.value.trim();
       if (taskText) {
         tasks.push({ text: taskText, completed: false });
-        input.value = "";
+        input.value = ""; // clear input
         saveAndRefresh();
       }
     };
-
+    // Filter dropdown change
     filterSelect.onchange = displayTasks;
-
+    
+    // Delete selected tasks
     deleteSelectedBtn.onclick = () => {
       const checkedBoxes = document.querySelectorAll(".task-checkbox:checked");
       const indices = Array.from(checkedBoxes).map(cb => parseInt(cb.dataset.index));
-      tasks = tasks.filter((_, i) => !indices.includes(i));
+      tasks = tasks.filter((_, i) => !indices.includes(i)); // remove those
       saveAndRefresh();
     };
 
+    // Mark selected tasks as complete
     completeSelectedBtn.onclick = () => {
       const checkedBoxes = document.querySelectorAll(".task-checkbox:checked");
       checkedBoxes.forEach(cb => {
@@ -125,6 +154,16 @@
       saveAndRefresh();
     };
 
+    // Update the task summary (total, completed, incomplete)
+    function updateSummary() {
+      const total = tasks.length;
+      const completed = tasks.filter(t => t.completed).length;
+      const incomplete = tasks.filter(t => !t.completed).length;
+
+      document.getElementById("summary").innerText =
+        `Total: ${total} | Completed: ${completed} | Incomplete: ${incomplete}`;
+    }
+    // On page load - show existing tasks
     displayTasks();
   </script>
 </body>
