@@ -3,9 +3,11 @@ body {
   font-family: 'Segoe UI', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: start; /* ✅ changed from center to start */
+  min-height: 100vh;   /* ✅ allow growing */
   margin: 0;
+  overflow-y: auto;    /* ✅ enable scrolling */
+  padding-top: 40px;   /* ✅ add some spacing from top */
 }
 
 #container {
@@ -15,7 +17,9 @@ body {
   box-shadow: 10px 10px 20px #dcdde1, -10px -10px 20px #ffffff;
   width: 90%;
   max-width: 600px;
+  /* ✅ Remove fixed height or vh units */
 }
+
 
 .header {
   display: flex;
@@ -63,6 +67,7 @@ button {
   color: #333;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 button:hover {
@@ -76,31 +81,37 @@ button:hover {
 }
 
 #tasklist li {
-  background-color: olivedrab;
+  background-color:yellowgreen;
   padding: 10px;
   margin: 8px 0;
   border-radius: 10px;
   box-shadow: 2px 2px 5px #ccc;
   color: white;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 }
 
-#tasklist li .task-left {
+.task-left {
   display: flex;
   align-items: center;
-  flex: 1;
   gap: 10px;
-  overflow-wrap: break-word;
+  flex: 1;
+  word-break: break-word;
+  min-width: 0;
 }
 
-#tasklist li .task-left span {
+.task-left span {
   word-wrap: break-word;
   word-break: break-word;
   max-width: 250px;
   display: inline-block;
+}
+
+.task-right {
+  display: flex;
+  gap: 5px;
 }
 
 .completed {
@@ -108,7 +119,8 @@ button:hover {
   text-decoration: line-through;
 }
 
-.edit-btn, .complete-btn {
+.edit-btn,
+.complete-btn {
   margin-left: 5px;
   padding: 4px 8px;
   border: none;
@@ -126,16 +138,17 @@ button:hover {
   color: white;
 }
 
-.bulk-actions {
+.bulk-buttons {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 15px;
+  gap: 10px;
 }
 
-#btn2 {
-  background: #ffefef;
-  color: #b30000;
+.load-btn {
+  background-color: #333;
+  color: white;
 }
 
 select {
