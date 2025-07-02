@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function printdata({id,...otherdata}){
+            console.log(id);
+            const{name,gender,ismarried,salary="not dislayed" }=otherdata;
+            console.log(otherdata);
+            console.log(salary);
+
+        } 
+        let userdata={id:10,'name':'krish','gender':'m','ismarried':true};
+        printdata({...userdata});
+        const radius=[2,3,4,5];
+        const area=function(radius){
+            return(Math.PI*radius*radius).toFixed(2);
+        }
+        const cirumface= function(radius){
+            return (Math.PI*2* radius).toFixed(2);
+        }
+
+    </script>
+    
+</body>
+</html>
