@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>K.G.F Restaurant</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    header {
+      background-image: url('kfg.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      position: relative;
+    }
+
+    header::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 42px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.55);
+      text-shadow: 2px 2px 6px #000;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    details {
+      border: 1px solid #e91e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background-color: #fff0f0;
+    }
+
+    summary {
+      background-color: #e91e1e;
+      color: white;
+      padding: 18px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      list-style: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    details[open] summary {
+      background-color: #b10000;
+    }
+
+    summary::marker {
+      display: none;
+    }
+
+    .content {
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .content input,
+    .content select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .content input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .content label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .content button {
+      padding: 12px 24px;
+      background-color: #e91e1e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .content button:hover {
+      background-color: #b10000;
+    }
+  </style>
+</head>
+<body>
+  <header></header>
+  <section>
+    <details>
+      <summary id="customer">Customer Details</summary>
+      <div class="content">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name" />
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter your phone number" />
+      </div>
+    </details>
+    <details>
+      <summary id="">Select Your Meal</summary>
+      <div class="content">
+        <label for="meal">Choose your meal</label>
+        <select id="meal">
+          <option>Chicken Bucket</option>
+          <option>Veg Zinger</option>
+          <option>Family Combo</option>
+          <option>Spicy Chicken Wrap</option>
+        </select>
+      </div>
+    </details>
+    <details>
+      <summary>Select Add On's</summary>
+      <div class="content">
+        <label><input type="checkbox" /> Coke</label>
+        <label><input type="checkbox" /> Fries</label>
+        <label><input type="checkbox" /> Cheese Dip</label>
+      </div>
+    </details>
+    <details>
+      <summary>Place Order</summary>
+      <div class="content">
+        <label for="payment">Payment Method</label>
+        <select id="payment">
+          <option>Cash</option>
+          <option>UPI</option>
+          <option>Credit Card</option>
+        </select>
+        <br><br>
+        <button>Confirm Order</button>
+      </div>
+    </details>
+  </section>
+  <script>
+    let checkdatacompletion=function(){
+        let Customername=document.getElementById("content");
+        let mobleno=document.getElementById("mobileno");
+        let orders=document.getElementById("opburger");
+    }
+  </script>
+</body>
+</html>
