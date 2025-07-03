@@ -1,175 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>K.G.F Restaurant</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #fff;
       color: #333;
     }
-
     header {
       background-image: url('kfg.jpg');
       background-size: cover;
       background-position: center;
-      height: 400px;
+      height: 300px;
       position: relative;
     }
-
     header::before {
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
       width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.55);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 42px;
       color: white;
-      background-color: rgba(0, 0, 0, 0.55);
-      text-shadow: 2px 2px 6px #000;
+      font-size: 38px;
       font-weight: bold;
+      text-shadow: 2px 2px 6px #000;
     }
-
     section {
-      max-width: 900px;
-      margin: 40px auto;
+      max-width: 650px;
+      margin: 30px auto;
       padding: 0 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
     }
-
     details {
       border: 1px solid #e91e1e;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: all 0.3s ease;
       background-color: #fff0f0;
+      border-radius: 10px;
+      margin-bottom: 15px;
     }
-
     summary {
       background-color: #e91e1e;
       color: white;
-      padding: 18px 20px;
-      font-size: 20px;
+      padding: 14px 20px;
+      font-size: 18px;
       cursor: pointer;
       list-style: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      border-radius: 10px 10px 0 0;
     }
-
     details[open] summary {
       background-color: #b10000;
     }
-
-    summary::marker {
+    summary::-webkit-details-marker {
       display: none;
     }
-
     .content {
       padding: 20px;
-      background-color: #fff;
     }
-
-    .content input,
-    .content select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    .content input[type="checkbox"] {
-      width: auto;
-      margin-right: 10px;
-    }
-
-    .content label {
+    label {
       display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
+      font-weight: bold;
+      margin: 12px 0 6px;
     }
-
-    .content button {
-      padding: 12px 24px;
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+    .checkbox-group label {
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+    button {
       background-color: #e91e1e;
       color: white;
       border: none;
       border-radius: 6px;
       font-size: 16px;
+      padding: 12px 24px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
     }
-
-    .content button:hover {
+    button:hover {
       background-color: #b10000;
     }
+    #summary {
+      display: none;
+      background: #f9f9f9;
+      padding: 16px;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .highlight {
+      color: #e91e1e;
+      font-weight: bold;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 900px) {
+  header {
+    height: 240px;
+  }
+  header::before {
+    font-size: 30px;
+  }
+  section {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    height: 200px;
+  }
+
+  header::before {
+    font-size: 22px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  summary {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  #summary {
+    font-size: 15px;
+  }
+
+  .success {
+    font-size: 16px;
+  }
+}
+
   </style>
 </head>
 <body>
-  <header></header>
-  <section>
-    <details>
-      <summary id="customer">Customer Details</summary>
-      <div class="content">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" placeholder="Enter your name" />
-        <label for="phone">Phone Number</label>
-        <input type="text" id="phone" placeholder="Enter your phone number" />
-      </div>
-    </details>
-    <details>
-      <summary id="">Select Your Meal</summary>
-      <div class="content">
-        <label for="meal">Choose your meal</label>
-        <select id="meal">
-          <option>Chicken Bucket</option>
-          <option>Veg Zinger</option>
-          <option>Family Combo</option>
-          <option>Spicy Chicken Wrap</option>
-        </select>
-      </div>
-    </details>
-    <details>
-      <summary>Select Add On's</summary>
-      <div class="content">
-        <label><input type="checkbox" /> Coke</label>
-        <label><input type="checkbox" /> Fries</label>
-        <label><input type="checkbox" /> Cheese Dip</label>
-      </div>
-    </details>
-    <details>
-      <summary>Place Order</summary>
-      <div class="content">
-        <label for="payment">Payment Method</label>
-        <select id="payment">
-          <option>Cash</option>
-          <option>UPI</option>
-          <option>Credit Card</option>
-        </select>
-        <br><br>
-        <button>Confirm Order</button>
-      </div>
-    </details>
-  </section>
-  <script>
-    let checkdatacompletion=function(){
-        let Customername=document.getElementById("content");
-        let mobleno=document.getElementById("mobileno");
-        let orders=document.getElementById("opburger");
+
+<header></header>
+
+<section>
+  <details>
+    <summary>Customer Details</summary>
+    <div class="content">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name">
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" placeholder="10-digit number">
+    </div>
+  </details>
+
+  <details>
+    <summary>Select Your Meal</summary>
+    <div class="content">
+      <label for="meal">Meal:</label>
+      <select id="meal">
+        <option value="">-- Select a meal --</option>
+        <option value="Chicken Bucket">Chicken Bucket (₹299)</option>
+        <option value="Veg Zinger">Veg Zinger (₹179)</option>
+        <option value="Family Combo">Family Combo (₹499)</option>
+        <option value="Spicy Chicken Wrap">Spicy Chicken Wrap (₹219)</option>
+      </select>
+    </div>
+  </details>
+
+  <details>
+    <summary>Select Add-ons</summary>
+    <div class="content checkbox-group">
+      <label><input type="checkbox" name="addons" value="Coke"> Coke (₹30)</label>
+      <label><input type="checkbox" name="addons" value="Fries"> Fries (₹50)</label>
+      <label><input type="checkbox" name="addons" value="Cheese Dip"> Cheese Dip (₹40)</label>
+    </div>
+  </details>
+
+  <details>
+    <summary>Payment Method</summary>
+    <div class="content">
+      <select id="payment">
+        <option>Cash</option>
+        <option>UPI</option>
+        <option>Credit Card</option>
+      </select>
+    </div>
+  </details>
+
+  <button onclick="placeOrder()">Place Order</button>
+
+  <div id="summary"></div>
+</section>
+
+<script>
+  // Accordion open-one-at-a-time
+  document.querySelectorAll("details").forEach((targetDetail) => {
+    targetDetail.addEventListener("toggle", () => {
+      if (targetDetail.open) {
+        document.querySelectorAll("details").forEach((detail) => {
+          if (detail !== targetDetail) detail.removeAttribute("open");
+        });
+      }
+    });
+  });
+
+  const mealPrices = {
+    "Chicken Bucket": 299,
+    "Veg Zinger": 179,
+    "Family Combo": 499,
+    "Spicy Chicken Wrap": 219
+  };
+
+  const addonPrices = {
+    "Coke": 30,
+    "Fries": 50,
+    "Cheese Dip": 40
+  };
+
+  function placeOrder() {
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const meal = document.getElementById("meal").value;
+    const payment = document.getElementById("payment").value;
+
+    if (name === "" || phone.length !== 10 || !/^\d+$/.test(phone) || meal === "") {
+      alert("Please fill valid name, phone number and select a meal.");
+      return;
     }
-  </script>
+    let total = mealPrices[meal];
+    let addons = [];
+
+    document.querySelectorAll('input[name="addons"]:checked').forEach(cb => {
+      total += addonPrices[cb.value];
+      addons.push(cb.value);
+    });
+
+    const summaryDiv = document.getElementById("summary");
+    summaryDiv.innerHTML = `
+      <p class="success">✅ Thank you, ${name}! Your order has been placed successfully.</p>
+      <p><span class="highlight">Phone:</span> ${phone}</p>
+      <p><span class="highlight">Meal:</span> ${meal}</p>
+      <p><span class="highlight">Add-ons:</span> ${addons.length ? addons.join(', ') : 'None'}</p>
+      <p><span class="highlight">Payment:</span> ${payment}</p>
+      <p class="highlight">Total Amount: ₹${total}</p>
+    `;
+    summaryDiv.style.display = "block";
+    summaryDiv.scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
 </body>
 </html>
