@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hotel Management</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: black;
+    }
+    header {
+      background-image: url('hotel management.jpeg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      position: relative;
+    }
+    header::before {
+      content: "Welcome to Hotel Management";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 38px;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px #000;
+    }
+    h1 {
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      border: solid black;
+      background-color: red;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    summary {
+      border: solid black;
+      background-color: black;
+      color: white;
+      font-size: medium;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px #000;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 10px 0;
+    }
+    .content {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    button {
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      padding: 12px 24px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header></header>
+  <section>
+    <h1>Hotel Registration Form</h1>
+    <details>
+      <summary>Customer Info</summary>
+      <div class="content">
+        <label for="name">Customer Name:</label>
+        <input type="text" id="name" placeholder="Enter your name"><span>Text</span>
+      </div>
+      <div class="content">
+        <label for="date">Check-in Date:</label>
+        <input type="date" id="date"><span>Date</span>
+      </div>
+      <div class="content">
+        <label for="total-no-person">Total No. of Persons:</label>
+        <input type="number" id="total-no-person" placeholder="Enter number of people"><span>Person</span>
+      </div>
+    </details>
+
+    <details>
+      <summary>Room Selection</summary>
+      <div class="content">
+        <label>
+          <input type="number" id="delux-room" placeholder="No. of Delux Rooms">
+          <span>Delux Room ₹2500/-</span>
+        </label>
+        <label>
+          <input type="number" id="suite-room" placeholder="No. of Suite Rooms">
+          <span>Suite Room ₹4000/-</span>
+        </label>
+      </div>
+    </details>
+
+    <details>
+      <summary>Amenities Selection</summary>
+      <div class="content">
+        <label><input type="checkbox" id="ac"> <span>AC</span></label>
+        <label><input type="checkbox" id="non-ac"> <span>Non-AC</span></label>
+      </div>
+    </details>
+
+    <details>
+      <summary>Advance Payment</summary>
+      <div class="content">
+        <label for="payment">Advance Amount:</label>
+        <input type="number" id="payment" placeholder="Enter amount">
+      </div>
+    </details>
+
+    <button id="btn">Register</button>
+  </section>
+</body>
+</html>
