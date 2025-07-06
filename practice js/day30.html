@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Hotel Management Registration Form for booking rooms with amenities">
+  <title>Hotel Management</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: black;
+    }
+    header {
+      background-image: url('../data/hotel management.jpeg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      position: relative;
+    }
+
+    header::before {
+      content: "Welcome to Hotel Management";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 38px;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px #000;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      border: solid black;
+      background-color: red;
+      border-radius: 5px;
+      padding: 10px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    summary {
+      border: solid black;
+      background-color: black;
+      color: white;
+      font-size: medium;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px #000;
+      border-radius: 5px;
+      padding: 8px;
+      margin: 15px 0;
+      cursor: pointer;
+    }
+
+    details {
+      margin-bottom: 10px;
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    span {
+      font-size: 14px;
+      color: gray;
+      margin-left: 5px;
+    }
+
+    button {
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      padding: 12px 24px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-align: left;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .modal-content pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .modal-content button {
+      margin-top: 20px;
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+      header::before {
+        font-size: 24px;
+        padding: 0 10px;
+      }
+      main {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header></header>
+
+  <main>
+    <h1>Hotel Registration Form</h1>
+    <details>
+      <summary>Customer Info</summary>
+      <div class="content">
+        <label for="name">Customer Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        <label for="date">Check-in Date:</label>
+        <input type="date" id="date">
+        <label for="total-no-person">Total No. of Persons:</label>
+        <input type="text" id="total-no-person" placeholder="Enter number of people">
+      </div>
+    </details>
+
+    <details>
+      <summary>Room Selection</summary>
+      <div class="content">
+        <label for="delux-room">Delux Room ₹2500/-:</label>
+        <input type="text" id="delux-room" placeholder="No. of Delux Rooms">
+        <label for="suite-room">Suite Room ₹4000/-:</label>
+        <input type="text" id="suite-room" placeholder="No. of Suite Rooms">
+      </div>
+    </details>
+
+    <details>
+      <summary>Amenities Selection</summary>
+      <div class="content">
+        <label><input type="radio" name="ac-selection" id="ac"> AC <span>(+₹1000)</span></label>
+        <label><input type="radio" name="ac-selection" id="non-ac"> Non-AC <span>(+₹500)</span></label>
+      </div>
+    </details>
+
+    <details>
+      <summary>Advance Payment</summary>
+      <div class="content">
+        <label for="payment">Advance Amount:</label>
+        <input type="text" id="payment" placeholder="Enter advance amount">
+      </div>
+    </details>
+    <button id="btn">Register</button>
+  </main>
+  <!-- MODAL -->
+  <div id="summary-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Booking Summary</h2>
+      <pre id="modal-summary"></pre>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+  <script>
+    function closeModal() {
+      document.getElementById("summary-modal").style.display = "none";
+    }
+    function allowOnlyDigits(e) {
+      if (!/^\d$/.test(e.key)) {
+        e.preventDefault();
+      }
+    }
+    function preventNonNumericPaste(e) {
+      const pasted = e.clipboardData.getData('text');
+      if (!/^\d+$/.test(pasted)) {
+        e.preventDefault();
+      }
+    }
+    // Apply to all number input fields
+    ["payment", "delux-room", "suite-room", "total-no-person"].forEach(id => {
+      const input = document.getElementById(id);
+      input.addEventListener("keypress", allowOnlyDigits);
+      input.addEventListener("paste", preventNonNumericPaste);
+    });
+
+    document.getElementById("btn").addEventListener("click", function () {
+      const name = document.getElementById("name").value.trim();
+      const date = document.getElementById("date").value;
+      const person = document.getElementById("total-no-person").value;
+      const delux = +document.getElementById("delux-room").value || 0;
+      const suite = +document.getElementById("suite-room").value || 0;
+      const payment = +document.getElementById("payment").value || 0;
+      const selectedAmenity = document.querySelector('input[name="ac-selection"]:checked');
+      const amenityType = selectedAmenity ? selectedAmenity.id : null;
+      if (!name || !date || !person || (delux === 0 && suite === 0)) {
+        alert("❌ Please fill all required details properly.");
+        return;
+      }
+      let total = delux * 2500 + suite * 4000;
+      if (amenityType === "ac") total += 1000;
+      if (amenityType === "non-ac") total += 500;
+      const balance = total - payment;
+      const summary =
+        `👤 Name: ${name}\n` +
+        `📅 Check-in Date: ${date}\n` +
+        `👥 Total Persons: ${person}\n` +
+        `🏨 Delux Rooms: ${delux}\n` +
+        `🏩 Suite Rooms: ${suite}\n` +
+        `🛎️ Amenity: ${amenityType ? amenityType.toUpperCase() : "None"}\n\n` +
+        `💰 Total Cost: ₹${total}\n` +
+        `💸 Advance Paid: ₹${payment}\n` +
+        `🧾 Remaining Balance: ₹${balance}`;
+      document.getElementById("modal-summary").textContent = summary;
+      document.getElementById("summary-modal").style.display = "flex";
+    });
+  </script>
+</body>
+</html>
