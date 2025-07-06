@@ -40,7 +40,7 @@
       font-weight: bold;
     }
 
-    /* Shake animation */
+
     @keyframes shake {
       0% { transform: translateX(0); }
       25% { transform: translateX(-5px); }
@@ -82,17 +82,12 @@
         message.classList.add("shake");
         return;
       }
-
-      // ✅ Case-insensitive match
       if (username.toLowerCase() === 'krish' && password === 'krish@123') {
         message.textContent = 'Login successful!';
         message.style.color = 'green';
-
-        // ✅ Clear fields
         document.getElementById('username').value = '';
         document.getElementById('password').value = '';
 
-        // ✅ Store in localStorage
         localStorage.setItem("loggedInUser", username);
       } else {
         message.textContent = 'Invalid username or password.';
@@ -100,7 +95,6 @@
         message.classList.add("shake");
       }
     }
-
     document.getElementById('loginButton').addEventListener('click', login);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') {
