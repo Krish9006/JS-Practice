@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> url  categrory</title>
+</head>
+<body load="loadboady()">
+    <script>
+        function loadboady(){
+            const url='https://fakestore.com/products';
+            loadproducts(url);
+        }
+        async function loadproducts(url){
+            try {
+                let response = await fetch(url);
+                let products= await response.json();
+                if (products.length >0) {
+                    document.querySelector("table").style.display = "block";
+                }
+                for(const product of products ){
+                    if(product.category !== "electronics" && product.category !== "jewelery") {
+                        continue;
+                    }
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${product.id}</td>
+                        <td>${product.title}</td>
+                        <td>${product.price}</td>
+                    `;
+                    document.querySelector("table tbody").appendChild(row);
+                }
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }   
+    </script>
+    
+</body>
+</html>

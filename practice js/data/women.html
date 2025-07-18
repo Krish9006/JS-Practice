@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Women Bag Price</title>
+  <style>
+    #price {
+      font-family: Algerian, sans-serif;
+      font-size: 18px;
+      color: black;
+      display: none; /* Hide initially */
+    }
+  </style>
+</head>
+<body>
+
+  <img id="bagImage" src="../data/womenimage.jpg" width="300px" height="300px" alt="Women's Bag">
+  <p id="price">THE PRICE IS ₹35,000/-</p>
+  <script>
+    const bag = document.getElementById("bagImage");
+    const price = document.getElementById("price");
+    bag.addEventListener("mouseenter", function() {
+      price.style.display = "block";
+    });
+    bag.addEventListener("mouseleave", function() {
+      price.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

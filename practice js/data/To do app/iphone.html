@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone</title>
+</head>
+<body>
+    <section>
+        <nav>
+            <h1>iPhone Images</h1>
+            <div> <img src="iphone.jpg" onmouseover="displayimages(this)" height="80px" width="80px" /></div>
+            <div> <img src="iphone.jpg" onmouseover="displayimages(this)" height="80px" width="80px" /></div>
+            <div> <img src="iphone.jpg" onmouseover="displayimages(this)" height="80px" width="80px" /></div>
+            <div> <img src="iphone.jpg" onmouseover="displayimages(this)" height="80px" width="80px" /></div>
+        </nav>
+    </section>
+
+    <main>
+        <span><img id="mainImage" src="iphone.jpg" width="400px" height="400px" /></span>
+    </main>
+
+    <script>
+        function displayimages(imgElement) {
+            // Change the main image source when hovered on a small image
+            document.getElementById("mainImage").src = imgElement.src;
+
+            // Optionally, style the hovered image (e.g., border highlight)
+            let allImages = document.querySelectorAll("nav img");
+            allImages.forEach(function(image) {
+                image.style.border = "none";
+            });
+
+            imgElement.style.border = "2px solid black";
+        }
+    </script>
+</body>
+</html>

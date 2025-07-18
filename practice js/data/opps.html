@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class student{
+            name;
+            age;
+            email;
+            constructor(name, age, email) {
+                this.name = name;
+                this.age = age;
+                this.email = email;
+            }
+        }
+        let students = [
+            new student("John", 20, "john@example.com"),
+            new student("Jane", 22, "jane@example.com"),
+            new student("Doe", 21, "doe@example.com")
+        ];
+        printdata(students);
+  console.log(`name is ${student.name}, age is ${student.age}, email is ${student.email}`);
+        
+        console.log(students);
+        class bank{
+            #balance=0;
+
+            depositamount(amount){
+                if(amount>0){
+                    this.#balance+=amount;
+                }  
+            }
+        }
+        get balance(){
+            return this.#balance;
+        }
+        let b= new bank();
+        b.depositamount(1000);
+        let amount=prompt("enter amount");
+        console.log(b.balance);
+
+    </script>
+</body>
+</html>

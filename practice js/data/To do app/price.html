@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iphone details using js</title>
+</head>
+<body>
+<h1>iphone details</h1>
+    <img src="iphone.jpg" alt="iPhone" />
+    <p id="price"></p>
+    <script>
+        function displayPrice(...args) {
+            var [productName, cities, ratings, className] = args;
+            document.getElementById("price").innerText = `The price of the ${productName} is $999.`;
+            document.getElementById("cities").innerText = `Available in: ${cities.join(", ")}`;
+            document.getElementById("ratings").innerText = `Ratings: ${ratings.join(", ")}`;
+            document.getElementById("className").innerText = `Class: ${className}`;
+        }
+        document.getElementById("price").innerText = "The price of the iPhone is $999.";
+    </script>
+</body>
+</html>

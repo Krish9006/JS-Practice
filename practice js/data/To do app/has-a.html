@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    fieldset {
+        border: 2px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    legend {
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    select, button {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+</style>
+<body>
+    <fieldset style="border: 1px solid black; padding: 10px;">
+        <legend>Install HDFC APP</legend>
+        <div>
+            <select id="1stversion">
+                <option value="-1">Select version</option>
+                <option value="ver1">Version 1</option>
+                <option value="ver2">Version 2[loan]</option>
+                <option value="ver3">Version 3[insurance]</option>
+            </select>
+            <button id="btnInstall">Install</button>
+        </div>
+    </fieldset>
+    <script>
+       
+        class version1{
+            personal = "personalbanking<br>";
+            creditcard="creditcard<br>";
+            print(){
+                document.write(`<B>${this.personal} ${this.creditcard}Is being installed</B> `);  
+            }
+        }
+        class version2{
+            loan="ioiloan|eductaion loan|home loan|car loan.";
+            print(){
+                document.write(`<B>${this.loan}<br>Is being installed</B>`);
+            }
+        }
+        class version3{
+            insurance="health insurance|life insurance|car insurance.";
+            print(){
+                document.write(`<B>${this.insurance}<br>Is being installed</B>`);
+            }
+
+        }
+        let obj= null;
+        document.getElementById('btnInstall').addEventListener('click', function() {
+        var version = document.getElementById('1stversion').value;
+        switch(version){
+            case 'ver1':
+                obj = new version1();
+                obj.print();
+                break;
+            case 'ver2':
+                obj = new version2();
+                obj.print();
+                break;
+            case 'ver3':
+                obj = new version3();
+                obj.print();
+                break;
+            default:
+                console.log('Please select a valid version to install.');
+        }
+    });
+    </script>
+</body>
+</html>

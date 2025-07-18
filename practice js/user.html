@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Check Username Availability</title>
+</head>
+<body>
+<input type="text" id="textusername" placeholder="Enter username" />
+<p id="msg"></p>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("textusername").addEventListener("keyup", function() {
+      let msg = document.getElementById("msg");
+      let data = this.value.trim();
+       
+      let flag = false;
+      if (data === "") {
+        msg.textContent = "";
+        return;
+      }
+
+      const url = 'user.json';
+      fetch(url)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(users) {
+          for (let user of users) {
+            if (user.name === data) {
+              flag = true;
+              break;
+            }
+          }
+          if (flag) {
+            msg.textContent = "Username already exists";
+            msg.style.color = "red";
+          } else {
+            msg.textContent = "Username is available";
+            msg.style.color = "green";
+          }
+        })
+        .catch(function(error) {
+          console.error('Error fetching user data:', error);  
+        });
+    });
+  });
+</script>
+
+</body>
+</html>

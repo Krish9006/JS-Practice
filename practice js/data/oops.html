@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Web Page</h1>
+    
+    <label for="dbSelect">Choose a database:</label>
+    <select id="dbSelect">
+        <option value="mysql">MySQL</option>
+        <option value="postgresql">PostgreSQL</option>
+        <option value="sqlite">SQLite</option>
+    </select>
+    
+    <p>This page is designed to demonstrate a simple HTML structure with embedded JavaScript and CSS.</p>
+
+    <button id="myButton">Perform DB Operation</button>
+
+    <script>
+        class Database {
+            _database = null;
+
+            insert() {
+                return `Connected to ${this._database}: record inserted`;
+            }
+
+            update() {
+                return `Connected to ${this._database}: record updated`;
+            }
+
+            delete() {
+                return `Connected to ${this._database}: record deleted`;
+            }
+
+            connect(databaseName) {
+                this._database = databaseName;
+                return `Connected to ${this._database}`;
+            }
+
+            disconnect() {
+                this._database = null;
+                return 'Disconnected from database';
+            }
+        }
+
+        function dpoperation() {
+            const db = new Database();
+            const dbName = document.getElementById('dbSelect').value;
+
+            console.log(db.connect(dbName));
+            console.log(db.insert());
+            console.log(db.update());
+            console.log(db.delete());
+            console.log(db.disconnect());
+        }
+
+        document.getElementById('myButton').addEventListener('click', dpoperation);
+    </script>
+</body>
+</html>
