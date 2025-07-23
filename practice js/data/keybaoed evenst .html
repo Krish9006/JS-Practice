@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> user resginaton
-        keybord  fouccs and blur</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Registration – Focus and Blur</title>
 </head>
 <body>
-    <fieldset>
-        <legend>User Registration</legend>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter username"  onfocus="handleFocus()" onblur="handleBlur()"><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password"  onfocus="handleFocus()" onblur="handleBlur()" ><br><br>
-            <div id="msg"></div> 
-        </form>
-    </fieldset>
-    <script>
-        function handleFocus() {
-            document.getElementById("username").addEventListener("focus", function() {
-                 const focus = document.getElementById("msg");
-            });
-        }
-        function handleBlur() {
-            document.getElementById("msg").innerHTML = "Input field blurred";
-        }
-    </script>
-   
-    
+  <fieldset style="width: 300px;">
+    <legend>User Registration</legend>
+    <form>
+      <label for="username">Username:</label><br>
+      <input type="text" id="username" placeholder="Enter username" /><br>
+      <div id="focusMsg" style="color: goldenrod; display: none;">
+        NAME IN BLOCK LETTERS ONLY
+      </div>
+      <div id="blurMsg" style="color: red; display: none;">
+        Username is required
+      </div><br>
+
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" placeholder="Enter password" />
+    </form>
+  </fieldset>
+
+  <script>
+    const usernameInput = document.getElementById("username");
+    const focusMsg = document.getElementById("focusMsg");
+    const blurMsg = document.getElementById("blurMsg");
+
+    usernameInput.addEventListener("focus", function () {
+      focusMsg.style.display = "block";
+      blurMsg.style.display = "none";
+    });
+
+    usernameInput.addEventListener("blur", function () {
+      focusMsg.style.display = "none";
+      if (this.value.trim().length === 0) {
+        blurMsg.style.display = "block";
+      }
+    });
+
+    usernameInput.addEventListener("keyup", function () {
+      this.value = this.value.toUpperCase();
+      focusMsg.style.display = "none";
+      blurMsg.style.display = "none";
+    });
+  </script>
 </body>
 </html>
