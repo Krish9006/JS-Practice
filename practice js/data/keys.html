@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keys</title>
+</head>
+<body>
+    <input type="text" id="testuser" name="" onkeydown="handlekeydown()" onkeyup="handlekeyup()" onkeypress="handlekeypress(event)">
+</body>
+<script type="text/javascript">
+    function handlekeydown() {
+        console.log("Key down event triggered");
+    }
+    function handlekeyup() {
+        console.log("Key up event triggered");
+    }
+    function handlekeypress(e) {
+        console.log("Key pressed: " + e);
+    }
+</script>
+</html>

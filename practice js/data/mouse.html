@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Events</title>
+</head>
+<body>
+  <div>
+    <img src="womenimage.jpg" alt="Mouse Image" id="image" width="300px" height="300px">
+  </div>
+
+  <script type="text/javascript">
+    // Open image in new tab on double-click
+    document.querySelector("img").addEventListener("dblclick", function () {
+      window.open("womenimage.jpg", "_blank", "height=500,width=500");
+    });
+
+    // Disable right-click context menu
+    document.oncontextmenu = function () {
+      return false;
+    };
+
+    // Disable text selection
+    document.onselectstart = function () {
+      return false;
+    };
+  </script>
+</body>
+</html>

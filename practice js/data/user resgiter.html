@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+    <fieldset>
+        <legend>User Registration</legend>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+            <div id="msg"></div> 
+        </form>
+    </fieldset>
+    <script type="text/javascript">
+        const msg = document.getElementById("msg");
+        document.getElementById("username").addEventListener("keyup", function () {
+            const data = this.value.trim();
+            if (data === "") {
+                msg.innerHTML = "";
+                return;
+            }
+            const url = '../data/user.json'; 
+            fetch(url)
+                .then(response => response.json())
+                .then(function (users) {
+                    let taken = users.some(user => user.username === data);
+                    if (taken) {
+                        msg.innerHTML = '<span style="color: red;">★ Username is taken, try another one</span>';
+                    } else {
+                        msg.innerHTML = '<span style="color: green;">☆ Username is available</span>';
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching user data:", error);
+                    msg.innerHTML = '<span style="color: red;">Error loading user data</span>';
+                });
+        });
+        document.getElementById("password").addEventListener("keypress", function (e) {
+            const key = e.key;
+            if (key >= 'A' && key <= 'Z') {
+                msg.innerHTML = '<span style="color: blue;">Strong password: includes uppercase letter</span>';
+            } else {
+                msg.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>

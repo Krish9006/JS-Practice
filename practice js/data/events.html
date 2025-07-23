@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change positions</title>
+</head>
+<style>
+    span {
+        font-size: 40px;
+        background-color:green;
+        position: absolute;
+        border-radius: 10px;
+    }
+    body {
+        height: 100vh;
+        margin: 0;
+    }
+    @keyframes identifier {
+        from {
+            transform: translateX(0);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(100px);
+            opacity: 1;
+        }
+    
+    }
+</style>
+<body onmousemove="changePosition(event)">
+    <div style="height: 100px;">
+    Move  the pointer  to test the code
+    </div>
+<span>★</span>
+    <script type="text/javascript">
+        function changePosition(event) {
+            let span = document.querySelector("span");
+            let x = event.clientX;
+            let y = event.clientY;
+            span.style.position = "absolute";
+            span.style.left = x + "px";
+            span.style.top = y + "px";
+            span.style.animationName = "identifier";
+            span.style.animationDuration = "7000ms";
+            star.style
+        }
+    </script>
+    
+</body>
+</html>

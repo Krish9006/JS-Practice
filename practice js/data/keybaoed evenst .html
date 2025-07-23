@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> user resginaton
+        keybord  fouccs and blur</title>
+</head>
+<body>
+    <fieldset>
+        <legend>User Registration</legend>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username"  onfocus="handleFocus()" onblur="handleBlur()"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password"  onfocus="handleFocus()" onblur="handleBlur()" ><br><br>
+            <div id="msg"></div> 
+        </form>
+    </fieldset>
+    <script>
+        function handleFocus() {
+            document.getElementById("username").addEventListener("focus", function() {
+                 const focus = document.getElementById("msg");
+            });
+        }
+        function handleBlur() {
+            document.getElementById("msg").innerHTML = "Input field blurred";
+        }
+    </script>
+   
+    
+</body>
+</html>
