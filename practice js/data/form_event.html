@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form Submission</title>
 </head>
 <body>
-    <form action="" onsubmit="alert('Form submitted!');" onreset="alert('Form reset!');">
+    <form id="loginForm" onreset="alert('Form reset!');">
         <dl>
-            <dt>username</dt>
+            <dt>Username</dt>
             <dd><input type="text" name="username" id="username"></dd>
-            <dt>password</dt>
+            <dt>Password</dt>
             <dd><input type="password" name="password" id="password"></dd>
+            <dd>
+                <button type="submit" style="margin: 10px;">Submit</button>
+                <button type="reset" style="margin: 10px;">Reset</button>
+            </dd>
         </dl>
-        <button type="submit" style="margin: 10px;">Submit</button>
-        <button type="reset" style="margin: 10px;">Reset</button>
     </form>
-    
+    <p id="msg"></p>
+
+    <script type="text/javascript">
+        const form = document.getElementById("loginForm");
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const msg = document.getElementById("msg");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); 
+            console.log("data not pushed to backend!");
+            msg.innerHTML = `<span style='font-weight: bold; font-size: 40px;'>Username is ${username.value}<br>Password is ${password.value}</span>`;
+        });
+    </script>
 </body>
 </html>
