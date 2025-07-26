@@ -42,10 +42,8 @@ function showQuestion() {
   timeLeft = 10;
   document.getElementById("timer").innerText = `Time Left: ${timeLeft}`;
   document.getElementById("questionbox").innerText = `Q${current + 1}: ${questions[current].question}`;
-
   const optionBox = document.getElementById("optionbox");
   optionBox.innerHTML = "";
-
   questions[current].options.forEach((opt, i) => {
     const label = document.createElement("label");
     label.classList.add("option-label");
